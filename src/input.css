@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* =================================
+   TAILWIND THEME CONFIGURATION
+================================= */
+
+@theme {
+    --color-bg: var(--bg);
+    --color-bg2: var(--bg2);
+    --color-fg: var(--fg);
+    --color-mut: var(--mut);
+    --color-line: var(--line);
+    --color-acc: var(--acc);
+    --color-accfg: var(--accfg);
+
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* =================================
+   CUSTOM CSS VARIABLES
+================================= */
+
+:root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --bg: #fafafa;
+    --bg2: #ffffff;
+    --fg: #0a0a0a;
+    --mut: #5b6169;
+    --line: #e3e5e8;
+    --acc: #059669;
+    --accfg: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #0a0a0a;
+        --bg2: #131416;
+        --fg: #f4f4f5;
+        --mut: #9a9fa8;
+        --line: #25272b;
+        --acc: #34d399;
+        --accfg: #04120c;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --bg2: #131416;
+    --fg: #f4f4f5;
+    --mut: #9a9fa8;
+    --line: #25272b;
+    --acc: #34d399;
+    --accfg: #04120c;
+}
+
+html {
+    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px);
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    background: var(--bg);
+    z-index: 60;
+}
+
+/* =================================
+   CUSTOM ANIMATIONS
+================================= */
+
+.glow {
+    background: radial-gradient(
+        60% 50% at 50% 0%,
+        color-mix(in srgb, var(--acc) 22%, transparent),
+        transparent 70%
+    );
+}
+
+@keyframes mq {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.mq {
+    animation: mq 28s linear infinite;
+    width: max-content;
+}
+
+@keyframes bl {
+    50% {
+        opacity: 0;
+    }
+}
+
+.cur {
+    animation: bl 1s steps(2) infinite;
+}
+
+/* =================================
+   FAQ
+================================= */
+
+details > summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] .pl {
+    transform: rotate(45deg);
+}
