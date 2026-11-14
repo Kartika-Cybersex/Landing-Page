@@ -32,8 +32,8 @@
     --fg: #f4f4f5;
     --mut: #9a9fa8;
     --line: #25272b;
-    --acc: #34d399;
-    --accfg: #04120c;
+    --acc: #fc2e00;
+    --accfg: #1a0500;
 }
 
 /* Light hanya jika dipilih eksplisit */
@@ -43,7 +43,7 @@
     --fg: #0a0a0a;
     --mut: #5b6169;
     --line: #e3e5e8;
-    --acc: #059669;
+    --acc: #d42500;
     --accfg: #ffffff;
 }
 
