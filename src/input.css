@@ -26,28 +26,7 @@
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
 
-    --bg: #fafafa;
-    --bg2: #ffffff;
-    --fg: #0a0a0a;
-    --mut: #5b6169;
-    --line: #e3e5e8;
-    --acc: #059669;
-    --accfg: #ffffff;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --bg: #0a0a0a;
-        --bg2: #131416;
-        --fg: #f4f4f5;
-        --mut: #9a9fa8;
-        --line: #25272b;
-        --acc: #34d399;
-        --accfg: #04120c;
-    }
-}
-
-:root[data-theme="dark"] {
+    /* Dark adalah default */
     --bg: #0a0a0a;
     --bg2: #131416;
     --fg: #f4f4f5;
@@ -55,6 +34,17 @@
     --line: #25272b;
     --acc: #34d399;
     --accfg: #04120c;
+}
+
+/* Light hanya jika dipilih eksplisit */
+:root[data-theme="light"] {
+    --bg: #fafafa;
+    --bg2: #ffffff;
+    --fg: #0a0a0a;
+    --mut: #5b6169;
+    --line: #e3e5e8;
+    --acc: #059669;
+    --accfg: #ffffff;
 }
 
 html {
@@ -89,13 +79,28 @@ body::before {
 
 @keyframes mq {
     to {
-        transform: translateX(-50%);
+        transform: translateX(calc(-50% - 0.5rem));
     }
 }
 
 .mq {
     animation: mq 28s linear infinite;
     width: max-content;
+}
+
+.mq-wrap {
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+.mq-wrap:hover .mq {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mq {
+        animation: none;
+    }
 }
 
 @keyframes bl {
