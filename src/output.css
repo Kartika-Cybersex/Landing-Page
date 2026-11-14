@@ -5,6 +5,7 @@
   :root, :host {
     --font-sans: "Inter", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    --font-display: "Montserrat", "Inter", system-ui, sans-serif;
     --color-emerald-500: oklch(69.6% 0.17 162.48);
     --color-slate-400: oklch(70.4% 0.04 256.788);
     --color-slate-900: oklch(20.8% 0.042 265.755);
@@ -587,6 +588,9 @@
   }
   .text-right {
     text-align: right;
+  }
+  .font-display {
+    font-family: var(--font-display);
   }
   .font-mono {
     font-family: var(--font-mono);
