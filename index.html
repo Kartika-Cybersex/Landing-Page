@@ -1,291 +1,773 @@
-<!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#090a0b" />
     <title>WolfStrike | Your CSIRT Is Ready</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <meta
+      name="description"
+      content="Hadapi insiden siber dengan bantuan AI Agent. WolfStrike membantu menginvestigasi ancaman dan mengelola respons keamanan."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:title" content="WolfStrike | Your CSIRT Is Ready" />
+    <meta
+      property="og:description"
+      content="Hadapi insiden siber dengan bantuan AI Agent. WolfStrike membantu menginvestigasi ancaman dan mengelola respons keamanan."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/images/wolf-portrait.jpg" as="image" media="(min-width: 601px)" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap"
-        rel="stylesheet">
+      rel="preload"
+      href="/images/wolf-portrait-small.jpg"
+      as="image"
+      media="(max-width: 600px)"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700;750;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Langsung ke konten</a>
+    <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" /></symbol>
+        <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12" /></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z" /></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24">
+          <rect x="8" y="8" width="12" height="12" rx="2" />
+          <path d="M15 8V4H4v11h4" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+          <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z" />
+          <path d="m8 12 3 3 5-6" />
+        </symbol>
+        <symbol id="i-target" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8" />
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 1v4m0 14v4M1 12h4m14 0h4" />
+        </symbol>
+        <symbol id="i-code" viewBox="0 0 24 24">
+          <path d="m8 5-7 7 7 7m8-14 7 7-7 7m-3-17-2 20" />
+        </symbol>
+        <symbol id="i-file" viewBox="0 0 24 24">
+          <path d="M14 3H5v18h14V8Zm0 0v5h5M8 12h8m-8 4h6" />
+        </symbol>
+        <symbol id="i-github" viewBox="0 0 24 24">
+          <path
+            d="M9 19c-4 1-4-2-6-2m12 5v-4a3.5 3.5 0 0 0-1-3c3-.3 6-1.5 6-6a5 5 0 0 0-1.5-3.5A4.7 4.7 0 0 0 18.4 2S17.2 1.7 15 3a13.4 13.4 0 0 0-7 0C5.8 1.7 4.6 2 4.6 2a4.7 4.7 0 0 0-.1 3.5A5 5 0 0 0 3 9c0 4.5 3 5.7 6 6a3.5 3.5 0 0 0-1 3v4"
+          />
+        </symbol>
+      </defs>
+    </svg>
 
-    <!-- Tailwind CSS -->
-    <link href="./src/output.css" rel="stylesheet">
-</head>
+    <!-- app:navbar -->
 
-<body class="font-sans antialiased">
-    <!-- NAVBAR COMPONENT -->
-    <div id="navbar"></div>
-    <main>
-        <!-- HERO -->
-        <section class="glow relative overflow-hidden">
-            <div class="mx-auto max-w-4xl px-5 pb-20 pt-20 text-center md:pt-28">
-                <h1 class="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl">Make Your Agent Work
-                    Like<br><span class="text-acc">A Profesional CSIRT Team</span></h1>
-                <p class="mx-auto mt-6 max-w-2xl text-base text-mut sm:text-lg">Hadapi insiden siber dengan bantuan AI
-                    Agent. WolfStrike membantu menginvestigasi ancaman dan mengelola respons keamanan.</p>
-                <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                    <a href="https://github.com/" Target="_blank"
-                        class="w-full text-white rounded-lg bg-acc px-6 py-3 font-bold text-accfg hover:opacity-90 sm:w-auto">See
-                        The Github</a>
-                    <a href="#demo"
-                        class="w-full rounded-lg border border-line bg-bg2 px-6 py-3 font-semibold hover:border-acc sm:w-auto">Lihat
-                        Pratinjau Langsung</a>
-                </div>
-                <p class="mt-6 text-sm text-mut">Skill AI Agent yang membantu deteksi Deterministik LLM untuk triage dan
-                    korelasi</p>
+    <main id="main">
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <div class="eyebrow hero-eyebrow">
+              <span class="status-dot"></span> AI-POWERED INCIDENT RESPONSE
+              <span class="version-tag">MCP / v0.1</span>
             </div>
-        </section>
+            <h1 id="hero-title">
+              Your Agent,<br />
+              Working Like a<br />
+              <span class="accent-word"
+                >Professional<br />
+                CSIRT Team</span
+              >
+            </h1>
+            <p class="hero-description">
+              Hadapi insiden siber dengan bantuan AI Agent. WolfStrike membantu menginvestigasi
+              ancaman dan mengelola respons keamanan.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#mulai"
+                >Jelajahi WolfStrike <svg class="icon"><use href="#i-up-right" /></svg
+              ></a>
+              <a class="button button-ghost" href="#demo"
+                ><span class="play-circle"
+                  ><svg class="icon"><use href="#i-play" /></svg
+                ></span>
+                Lihat cara kerjanya</a
+              >
+            </div>
+            <div class="hero-traits">
+              <span
+                ><svg class="icon"><use href="#i-code" /></svg> MCP-native</span
+              ><span
+                ><svg class="icon"><use href="#i-target" /></svg> Evidence-driven</span
+              ><span
+                ><svg class="icon"><use href="#i-shield" /></svg> Human in control</span
+              >
+            </div>
+          </div>
 
-        <!-- ABOUT -->
-        <section id="about" class="mx-auto max-w-6xl px-5 py-20">
-            <div class="grid items-center gap-10 md:grid-cols-2">
+          <div class="hero-visual" aria-hidden="true">
+            <div class="visual-caption">
+              <span>WOLFSTRIKE / THE WATCHFUL EYE</span><span class="crosshair">+</span>
+            </div>
+            <div class="radar-ring radar-ring-outer"></div>
+            <div class="radar-ring radar-ring-inner"></div>
+            <div class="radar-axis radar-axis-x"></div>
+            <div class="radar-axis radar-axis-y"></div>
+            <picture class="wolf-picture"
+              ><source media="(max-width: 600px)" srcset="/images/wolf-portrait-small.jpg" />
+              <img
+                class="wolf-portrait"
+                src="/images/wolf-portrait.jpg"
+                width="1536"
+                height="1229"
+                fetchpriority="high"
+                alt=""
+            /></picture>
+            <div class="scan-line"></div>
+            <div class="target-marker"><span></span><i></i></div>
+            <div class="visual-coordinate">
+              01 / OBSERVE<br /><span>02 / UNDERSTAND<br />03 / RESPOND</span>
+            </div>
+            <div class="signal-card">
+              <span class="signal-icon"
+                ><svg class="icon"><use href="#i-shield" /></svg
+              ></span>
+              <div><small>LESS GUESSWORK.</small><strong>More situational awareness.</strong></div>
+              <span class="signal-bars"><i></i><i></i><i></i><i></i></span>
+            </div>
+            <span class="visual-cross visual-cross-bottom">+</span>
+          </div>
+          <div class="hero-bottom">
+            <span>BUILT FOR THE PEOPLE ON THE FRONT LINE.</span
+            ><a href="#fitur">EXPLORE THE CAPABILITIES <span>↓</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="ecosystem" aria-label="Ekosistem AI agent dan security tools">
+        <div class="container ecosystem-inner">
+          <p>YOUR AGENT.<br /><span>YOUR SECURITY ECOSYSTEM.</span></p>
+          <div class="ecosystem-names">
+            <span class="ecosystem-name hermes-name"><span aria-hidden="true">✳</span> Hermes</span
+            ><span class="ecosystem-name openclaw-name"
+              >OpenClaw<span aria-hidden="true">_</span></span
+            ><span class="ecosystem-name wazuh-name">wazuh</span
+            ><span class="ecosystem-name hive-name"
+              ><span class="hexagon" aria-hidden="true"></span>TheHive</span
+            ><span class="ecosystem-name vt-name"
+              ><span class="vt-symbol" aria-hidden="true">›</span>VirusTotal</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <div class="container about-layout">
+          <div class="about-copy" data-reveal>
+            <p class="eyebrow">ABOUT WOLFSTRIKE</p>
+            <h2 id="about-title">
+              Find out how<br />
+              <span class="text-muted">software works</span>
+            </h2>
+            <p class="about-description">
+              Minta kepada AI Agent Anda untuk mengambil Log SIEM atau Report Insiden dari Email,
+              Kemudian minta untuk enricment dan validasi IOC
+            </p>
+            <a class="text-link" href="#demo">
+              Lihat contoh investigasi <svg class="icon"><use href="#i-arrow" /></svg>
+            </a>
+          </div>
+          <div class="about-console" data-reveal aria-label="Contoh permintaan kepada AI agent">
+            <div class="about-console-heading">
+              <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span>wolfstrike / agent workflow</span>
+            </div>
+            <div class="about-console-body">
+              <p class="eyebrow">PROMPT EXAMPLE</p>
+              <div class="about-request">
+                <span aria-hidden="true">&gt;</span>
+                <p>
+                  Ambil log SIEM atau report insiden dari email, lalu lakukan enrichment dan
+                  validasi IOC.
+                </p>
+              </div>
+              <div class="about-sources">
+                <span
+                  ><svg class="icon"><use href="#i-file" /></svg> SIEM logs</span
+                >
+                <span
+                  ><svg class="icon"><use href="#i-file" /></svg> Email reports</span
+                >
+              </div>
+              <div class="about-flow">
+                <span>AI AGENT</span
+                ><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg
+                ><strong>WOLFSTRIKE</strong>
+              </div>
+              <div class="about-outcomes">
+                <span
+                  ><svg class="icon"><use href="#i-check" /></svg> IOC enrichment</span
+                >
+                <span
+                  ><svg class="icon"><use href="#i-check" /></svg> IOC validation</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section capabilities" id="fitur" aria-labelledby="capabilities-title">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <div>
+              <p class="eyebrow"><span class="section-number">01 /</span> THE CAPABILITIES</p>
+              <h2 id="capabilities-title">
+                Designed for the solo<br />
+                <span class="text-muted">Incident Response</span>
+              </h2>
+            </div>
+            <p class="section-description">
+              Satu alur kerja untuk memahami insiden.<br />WolfStrike menghubungkan konteks, bukti,
+              dan<br class="desktop-break" />
+              langkah berikutnya lewat agent yang Anda gunakan.
+            </p>
+          </div>
+          <div class="capability-grid">
+            <article class="capability-card investigation-card" data-reveal>
+              <div class="card-topline">
+                <span class="eyebrow">01 / INVESTIGATE</span
+                ><svg class="icon"><use href="#i-target" /></svg>
+              </div>
+              <h3>Every indicator.<br />A clearer picture.</h3>
+              <p>
+                Ekstrak IP, domain, dan hash. Perkaya konteks melalui VirusTotal untuk membantu
+                memvalidasi indikator ancaman.
+              </p>
+              <div class="ioc-visual" aria-label="Ilustrasi ekstraksi indikator">
+                <div class="ioc-visual-header">
+                  <span><span class="status-dot"></span> IOC ENRICHMENT</span
+                  ><span>ILLUSTRATION</span>
+                </div>
+                <div class="ioc-row">
+                  <span class="ioc-type">IP</span><code>203.0.113.24</code
+                  ><span class="ioc-state"
+                    >EXTRACTED <svg class="icon"><use href="#i-check" /></svg
+                  ></span>
+                </div>
+                <div class="ioc-row">
+                  <span class="ioc-type">DOMAIN</span><code>login.example</code
+                  ><span class="ioc-state"
+                    >EXTRACTED <svg class="icon"><use href="#i-check" /></svg
+                  ></span>
+                </div>
+                <div class="ioc-row">
+                  <span class="ioc-type">SHA-256</span><code>9f3a…e71c</code
+                  ><span class="ioc-state"
+                    >EXTRACTED <svg class="icon"><use href="#i-check" /></svg
+                  ></span>
+                </div>
+                <div class="ioc-visual-footer">
+                  <span class="connection-line"></span><span>FROM RAW EVIDENCE TO CONTEXT.</span>
+                </div>
+              </div>
+            </article>
+            <article class="capability-card triage-card" data-reveal>
+              <div class="card-topline">
+                <span class="eyebrow">02 / PRIORITIZE</span
+                ><svg class="icon"><use href="#i-shield" /></svg>
+              </div>
+              <h3>Know what matters first.</h3>
+              <p>
+                Klasifikasikan severity dan prioritas agar investigasi berfokus pada insiden yang
+                perlu perhatian.
+              </p>
+              <div class="severity-scale" aria-label="Tingkat severity">
+                <span>LOW</span><span>MEDIUM</span
+                ><span class="severity-active">HIGH <span class="status-dot"></span></span
+                ><span>CRITICAL</span>
+              </div>
+            </article>
+            <article class="capability-card report-card" data-reveal>
+              <div class="card-topline">
+                <span class="eyebrow">03 / TAKE ACTION</span
+                ><svg class="icon"><use href="#i-file" /></svg>
+              </div>
+              <h3>A response you can explain.</h3>
+              <p>
+                Susun temuan, mapping MITRE ATT&CK, dan rekomendasi respons dalam laporan yang bisa
+                ditinjau tim.
+              </p>
+              <div class="report-preview">
+                <svg class="icon"><use href="#i-file" /></svg>
                 <div>
-                    <p class="text-sm font-semibold uppercase tracking-widest text-acc">About WolfStrike</p>
-                    <h2 class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">Find out how software works.</h2>
-                    <p class="mt-5 text-mut">
-                        Minta kepada AI Agent Anda untuk mengambil Log SIEM atau Report Insiden dari Email, Kemudian minta untuk enricment dan validasi IOC
-                    </p>
-                    <div class="mt-6 rounded-xl border border-line bg-bg2 p-5">
-                        <p class="mt-1 text-sm text-mut">WolfStrike memperkuat Anda, bukan menggantikan monitoring 24/7,
-                            forensik fisik, atau tanggung jawab hukum.</p>
-                    </div>
+                  <strong>incident-report.md</strong><span>Evidence. Context. Next steps.</span>
                 </div>
-                <div class="overflow-hidden rounded-xl border border-line bg-bg shadow-lg">
-                    <div class="flex items-center gap-2 border-b border-line px-4 py-2.5">
-                        <span class="h-1.5 w-1.5 rounded-full" style="background:#ff5f57"></span>
-                        <span class="h-1.5 w-1.5 rounded-full" style="background:#febc2e"></span>
-                        <span class="h-1.5 w-1.5 rounded-full" style="background:#28c840"></span>
-                        <span class="font-mono text-xs text-mut">wolfstrike — agent cli</span>
-                    </div>
-                    <div class="p-5 font-mono text-sm leading-relaxed">
-                        <p class="text-mut">user@wolfstrike:~$ </p>
-                        <p class="mt-2"><span class="font-semibold text-acc">›</span> <span class="text-fg">Use
-                                Wolfstrike to collect log in wazuh in windows C:\Program Files
-                                (x86)\ossec-agent\incident.log. analyze and validate the IOC. Then make a rule of
-                                mitigation if there something malicious/suspicious in the IOC when enrichment and
-                                validation</span></p>
-                    </div>
+                <svg class="icon"><use href="#i-check" /></svg>
+              </div>
+            </article>
+          </div>
+          <div class="capability-footnotes" data-reveal>
+            <span
+              ><svg class="icon"><use href="#i-check" /></svg> Structured incident intake</span
+            ><span
+              ><svg class="icon"><use href="#i-check" /></svg> MITRE ATT&CK mapping</span
+            ><span
+              ><svg class="icon"><use href="#i-check" /></svg> Operator-reviewed response</span
+            >
+          </div>
+        </div>
+      </section>
 
-                </div>
-
+      <section class="section demo-section" id="demo" aria-labelledby="demo-title">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <div>
+              <p class="eyebrow"><span class="section-number">02 /</span> SEE IT IN CONTEXT</p>
+              <h2 id="demo-title">
+                An alert comes in.<br /><span class="text-muted">Clarity comes out.</span>
+              </h2>
             </div>
-        </section>
-
-        <!-- MARQUEE -->
-        <section class="border-y border-line bg-acc py-8">
+            <div class="section-description">
+              <p>
+                Pilih skenario. Ikuti prosesnya.<br />Lihat bagaimana potongan bukti menjadi arah
+                respons.
+              </p>
+              <span class="demo-label"
+                ><span class="status-dot"></span> INTERACTIVE SIMULATION</span
+              >
+            </div>
+          </div>
+          <div class="demo-shell" data-reveal>
+            <div class="demo-toolbar">
+              <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span>wolfstrike / investigation workspace</span
+              ><span class="toolbar-label">DEMO ENVIRONMENT</span>
+            </div>
+            <div class="demo-tabs" role="tablist" aria-label="Pilih skenario insiden">
+              <button
+                class="demo-tab"
+                id="tab-ssh"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="scenario-panel"
+                tabindex="0"
+                data-scenario="ssh"
+              >
+                <span>01</span> SSH brute force
+                <svg class="icon"><use href="#i-up-right" /></svg></button
+              ><button
+                class="demo-tab"
+                id="tab-phishing"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="scenario-panel"
+                tabindex="-1"
+                data-scenario="phishing"
+              >
+                <span>02</span> Phishing email
+                <svg class="icon"><use href="#i-up-right" /></svg></button
+              ><button
+                class="demo-tab"
+                id="tab-ioc"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="scenario-panel"
+                tabindex="-1"
+                data-scenario="ioc"
+              >
+                <span>03</span> Suspicious IOC <svg class="icon"><use href="#i-up-right" /></svg>
+              </button>
+            </div>
             <div
-                class="group overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_10%,#000_90%,transparent)]">
-                <div class="mq flex w-max [animation-duration:4s] group-hover:[animation-play-state:paused]">
-                    <div class="mq-row flex shrink-0 items-center gap-4 pr-4">
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Toko Online</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>WordPress</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Aplikasi Internal</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>VPS Linux</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Server Web</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Layanan SSH</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Toko Online</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>WordPress</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Aplikasi Internal</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>VPS Linux</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Server Web</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Layanan SSH</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Toko Online</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>WordPress</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Aplikasi Internal</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>VPS Linux</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Server Web</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Layanan SSH</span>
-                    </div>
-                    <div class="mq-row flex shrink-0 items-center gap-4 pr-4" aria-hidden="true">
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Toko Online</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>WordPress</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Aplikasi Internal</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>VPS Linux</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Server Web</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Layanan SSH</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Toko Online</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>WordPress</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Aplikasi Internal</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>VPS Linux</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Server Web</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Layanan SSH</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Toko Online</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>WordPress</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Aplikasi Internal</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>VPS Linux</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Server Web</span>
-                        <span
-                            class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:border-acc"><span
-                                class="h-1.5 w-1.5 rounded-full bg-acc"></span>Layanan SSH</span>
-                    </div>
+              class="demo-workspace"
+              id="scenario-panel"
+              role="tabpanel"
+              aria-labelledby="tab-ssh"
+              tabindex="0"
+            >
+              <div class="terminal">
+                <div class="terminal-heading">
+                  <span>AGENT TERMINAL</span
+                  ><span id="demo-status" role="status" aria-live="polite">Skenario siap</span>
                 </div>
+                <div class="terminal-prompt">
+                  <span>you</span>
+                  <p id="scenario-prompt">
+                    Analisis alert SSH ini. Ekstrak IOC, petakan teknik serangan, lalu susun
+                    rekomendasi respons.
+                  </p>
+                </div>
+                <div
+                  class="terminal-output"
+                  id="terminal-output"
+                  role="log"
+                  aria-label="Hasil simulasi investigasi"
+                  aria-live="off"
+                >
+                  <p class="terminal-idle">
+                    <span>›</span> Pilih “Jalankan simulasi” untuk mengikuti investigasi.<span
+                      class="terminal-cursor"
+                      aria-hidden="true"
+                      >▌</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <aside class="demo-findings" aria-labelledby="findings-title">
+                <div class="findings-heading">
+                  <span class="eyebrow">CASE OVERVIEW</span
+                  ><span class="case-id" id="case-id">DEMO-001</span>
+                </div>
+                <h3 id="findings-title">SSH brute force</h3>
+                <p id="scenario-description">
+                  Percobaan login SSH berulang pada satu host dari alamat IP yang sama.
+                </p>
+                <div class="finding-metadata">
+                  <div>
+                    <span>SEVERITY</span
+                    ><strong class="severity-badge" id="finding-severity">HIGH</strong>
+                  </div>
+                  <div><span>MITRE ATT&CK</span><strong id="finding-technique">T1110</strong></div>
+                </div>
+                <div class="investigation-progress">
+                  <div><span>INVESTIGATION</span><span id="demo-progress-label">0 / 5</span></div>
+                  <div
+                    class="progress-track"
+                    role="progressbar"
+                    aria-label="Progres simulasi"
+                    aria-valuemin="0"
+                    aria-valuemax="5"
+                    aria-valuenow="0"
+                    id="demo-progress"
+                  >
+                    <span></span>
+                  </div>
+                </div>
+                <div class="recommendation">
+                  <span class="eyebrow">NEXT STEP / REKOMENDASI</span>
+                  <p id="finding-recommendation">
+                    Jalankan simulasi untuk melihat rekomendasi penanganan.
+                  </p>
+                </div>
+              </aside>
             </div>
-        </section>
+            <div class="demo-actions">
+              <p>
+                <span class="status-dot"></span> Data contoh. Tidak mengakses atau mengubah sistem
+                Anda.
+              </p>
+              <div>
+                <button
+                  class="button button-small button-secondary"
+                  id="copy-report"
+                  type="button"
+                  disabled
+                >
+                  <svg class="icon"><use href="#i-copy" /></svg> Salin laporan</button
+                ><button class="button button-small button-primary" id="run-demo" type="button">
+                  <svg class="icon"><use href="#i-play" /></svg><span>Jalankan simulasi</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <p class="demo-disclaimer">
+            Severity, IOC, dan hasil enrichment di atas adalah ilustrasi alur produk, bukan hasil
+            analisis ancaman langsung.
+          </p>
+          <noscript
+            ><p class="noscript-note">
+              Simulasi interaktif membutuhkan JavaScript. Alur investigasi lengkap tersedia di
+              bagian cara kerja dan dokumentasi.
+            </p></noscript
+          >
+        </div>
+      </section>
 
-        <!-- FITUR -->
-        <section id="fitur" class="border-y border-line bg-bg2 py-20">
-            <div class="mx-auto max-w-6xl px-5">
-                <div class="max-w-2xl">
-                    <p class="text-sm font-semibold uppercase tracking-widest text-acc">Feature</p>
-                    <h2 class="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">Designed for the solo Incident Response</h2>
-                </div>
-                <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    <div class="rounded-xl border border-line bg-bg p-6">
-                        <h3 class="font-semibold">Incident Intake</h3>
-                        <p class="mt-2 text-sm text-mut">Laporan insiden diterima dari chat, email, atau web, lalu
-                            dicatat lengkap dengan waktu, pelapor, dan bukti awal.</p>
-                    </div>
-                    <div class="rounded-xl border border-line bg-bg p-6">
-                        <h3 class="font-semibold">Triage &amp; Classification</h3>
-                        <p class="mt-2 text-sm text-mut">Insiden diperiksa cepat dan diberi tingkat prioritas, dari
-                            low sampai critical, agar respons fokus ke yang paling berisiko.</p>
-                    </div>
-                    <div class="rounded-xl border border-line bg-bg p-6">
-                        <h3 class="font-semibold">MITRE ATT&amp;CK Mapping</h3>
-                        <p class="mt-2 text-sm text-mut">Setiap tanda serangan dipetakan ke taktik dan teknik MITRE
-                            ATT&amp;CK, sehingga pola serangan mudah dibaca dan dilaporkan.</p>
-                    </div>
-                    <div class="rounded-xl border border-line bg-bg p-6">
-                        <h3 class="font-semibold">Threat Investigation &amp; IOC Enrichment</h3>
-                        <p class="mt-2 text-sm text-mut">IP, domain, hash, dan akun mencurigakan ditelusuri serta
-                            diperkaya intel eksternal untuk menemukan cakupan serangan.</p>
-                    </div>
-                    <div class="rounded-xl border border-line bg-bg p-6">
-                        <h3 class="font-semibold">Reporting</h3>
-                        <p class="mt-2 text-sm text-mut">Timeline, bukti, dan akar masalah dirangkum jadi laporan
-                            pasca-insiden yang rapi dan siap dipakai audit.</p>
-                    </div>
-                    <div class="rounded-xl border border-line bg-bg p-6">
-                        <h3 class="font-semibold">Recomendation</h3>
-                        <p class="mt-2 text-sm text-mut">Rekomendasi perbaikan konkret diberikan setelah insiden,
-                            dari penutupan celah, hardening, sampai mitigasi jangka panjang.</p>
-                    </div>
-                </div>
+      <section class="section workflow-section" id="cara-kerja" aria-labelledby="workflow-title">
+        <div class="container workflow-layout">
+          <div class="workflow-intro" data-reveal>
+            <p class="eyebrow"><span class="section-number">03 /</span> THE WORKFLOW</p>
+            <h2 id="workflow-title">From first alert<br />to the <span>next move.</span></h2>
+            <p>
+              Konteks yang terhubung di setiap tahap.<br />Output satu modul menjadi input modul
+              berikutnya, sehingga bukti tetap mengikuti alur investigasi.
+            </p>
+            <div class="human-control">
+              <svg class="icon"><use href="#i-shield" /></svg>
+              <div>
+                <strong>The decisions stay yours.</strong>
+                <p>
+                  WolfStrike membantu analisis dan rekomendasi. Keputusan serta konfigurasi respons
+                  tetap di tangan operator.
+                </p>
+              </div>
             </div>
-        </section>
+          </div>
+          <ol class="workflow-steps">
+            <li data-reveal>
+              <span class="step-number">01</span>
+              <div>
+                <h3>Bring the evidence.</h3>
+                <p>
+                  Mulai dari alert Wazuh, case TheHive, atau laporan insiden manual melalui agent
+                  Anda.
+                </p>
+                <code>intake_incident</code>
+              </div>
+              <svg class="icon"><use href="#i-up-right" /></svg>
+            </li>
+            <li data-reveal>
+              <span class="step-number">02</span>
+              <div>
+                <h3>Set the priority.</h3>
+                <p>Tinjau kategori, severity, dan prioritas insiden.</p>
+                <code>triage_incident</code>
+              </div>
+              <svg class="icon"><use href="#i-up-right" /></svg>
+            </li>
+            <li data-reveal>
+              <span class="step-number">03</span>
+              <div>
+                <h3>Connect the behavior.</h3>
+                <p>Petakan perilaku ke taktik dan teknik MITRE ATT&CK.</p>
+                <code>map_mitre_attack</code>
+              </div>
+              <svg class="icon"><use href="#i-up-right" /></svg>
+            </li>
+            <li data-reveal>
+              <span class="step-number">04</span>
+              <div>
+                <h3>Investigate the indicators.</h3>
+                <p>
+                  Ekstrak dan perkaya IOC menggunakan bukti dan threat intelligence yang
+                  dikonfigurasi.
+                </p>
+                <code>investigate_incident</code>
+              </div>
+              <svg class="icon"><use href="#i-up-right" /></svg>
+            </li>
+            <li data-reveal>
+              <span class="step-number">05</span>
+              <div>
+                <h3>Make the next move.</h3>
+                <p>Tinjau laporan dan rekomendasi sebelum menentukan tindakan respons.</p>
+                <code>respond_and_report</code>
+              </div>
+              <svg class="icon"><use href="#i-up-right" /></svg>
+            </li>
+          </ol>
+        </div>
+      </section>
 
-        <!-- FAQ -->
-        <section id="faq" class="mx-auto max-w-3xl px-5 py-20">
-            <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
-            <div class="mt-8 divide-y divide-line rounded-xl border border-line bg-bg2">
-                <details class="group p-5">
-                    <summary class="flex items-center justify-between gap-4 font-semibold">Apakah ini menggantikan tim
-                        CSIRT?<span class="pl text-xl text-acc transition">+</span></summary>
-                    <p class="mt-3 text-sm text-mut">Tidak. WolfStrike memperkuat satu orang IT agar bekerja seperti tim
-                        kecil. Monitoring 24/7, forensik mendalam, dan tanggung jawab hukum tetap membutuhkan manusia
-                        dan pihak eksternal.</p>
-                </details>
-                <details class="group p-5">
-                    <summary class="flex items-center justify-between gap-4 font-semibold">Server apa yang
-                        didukung?<span class="pl text-xl text-acc transition">+</span></summary>
-                    <p class="mt-3 text-sm text-mut">Versi awal fokus pada VPS Linux dengan akses root atau sudo
-                        terbatas. Shared hosting tanpa akses root belum didukung.</p>
-                </details>
-                <details class="group p-5">
-                    <summary class="flex items-center justify-between gap-4 font-semibold">Apa yang terjadi jika API LLM
-                        mati?<span class="pl text-xl text-acc transition">+</span></summary>
-                    <p class="mt-3 text-sm text-mut">Deteksi dan pertahanan dasar berbasis aturan tetap berjalan. Hanya
-                        analisis dan penjelasan cerdas yang tertunda.</p>
-                </details>
+      <section class="section getting-started" id="mulai" aria-labelledby="getting-started-title">
+        <div class="container getting-started-layout">
+          <div data-reveal>
+            <p class="eyebrow"><span class="section-number">04 /</span> GET YOUR AGENT READY</p>
+            <h2 id="getting-started-title">
+              Your stack.<br />Your agent.<br /><span class="text-muted">Meet WolfStrike.</span>
+            </h2>
+            <p class="getting-started-description">
+              Jalankan MCP server, lalu hubungkan ke Hermes, OpenClaw, atau AI coding agent yang
+              mendukung MCP.
+            </p>
+            <a class="text-link" href="#setup-guide"
+              >Lihat panduan setup <svg class="icon"><use href="#i-up-right" /></svg
+            ></a>
+            <div class="setup-requirements">
+              <span>MIT LICENSED / MCP</span><span>NODE.JS ≥ 22.22.2</span>
             </div>
-        </section>
+          </div>
+          <div class="setup-panel" id="setup-guide" data-reveal>
+            <div class="setup-panel-heading">
+              <span class="eyebrow">01 / START THE SERVER</span
+              ><button
+                class="icon-button copy-button"
+                type="button"
+                data-copy="install-command"
+                aria-label="Salin perintah instalasi"
+              >
+                <svg class="icon"><use href="#i-copy" /></svg>
+              </button>
+            </div>
+            <pre
+              class="install-code"
+            ><code id="install-command">git clone https://github.com/Kartika-Cybersex/csirt-skill-hermes.git
+cd csirt-skill-hermes
+npm install
+npm run dev</code></pre>
+            <div class="setup-note">
+              <svg class="icon"><use href="#i-code" /></svg> Jalankan perintah ini di terminal lokal
+              Anda.
+            </div>
+            <div class="endpoint-block">
+              <p class="eyebrow">02 / CONNECT YOUR MCP CLIENT</p>
+              <p>
+                Tambahkan endpoint berikut di konfigurasi MCP agent Anda. Ikuti format klien di
+                dokumentasi.
+              </p>
+              <div class="endpoint">
+                <code id="mcp-endpoint">http://localhost:3000/mcp</code
+                ><button
+                  class="icon-button copy-button"
+                  type="button"
+                  data-copy="mcp-endpoint"
+                  aria-label="Salin MCP endpoint"
+                >
+                  <svg class="icon"><use href="#i-copy" /></svg>
+                </button>
+              </div>
+            </div>
+            <div class="setup-footnote">
+              <span class="status-dot"></span> Enrichment VirusTotal memerlukan API key Anda
+              sendiri.
+            </div>
+            <div class="repository-note">
+              <p>Akses repository produk diperlukan untuk mengikuti instalasi.</p>
+              <a
+                href="https://github.com/Kartika-Cybersex/csirt-skill-hermes#readme"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Repository &amp; dokumentasi lengkap
+                <svg class="icon"><use href="#i-up-right" /></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- CTA -->
-        <section id="cta" class="glow border-t border-line">
-            <div class="mx-auto max-w-3xl px-5 py-20 text-center">
-                <h2 class="font-display text-3xl font-extrabold tracking-tight sm:text-5xl">Build Your CSIRT Capabilities With Us Today</h2>
-                <p class="mt-4 text-mut">Simplify your company’s cyber incident response with the help of our Skill AI Agent</p>
-                <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                    <a href="#daftar"
-                        class="w-full rounded-full bg-acc text-white px-6 py-3 font-semibold text-accfg hover:opacity-90 sm:w-auto">
-                        See Documentation</a>
-                </div>
-            </div>
-        </section>
+      <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="container faq-layout">
+          <div data-reveal>
+            <p class="eyebrow">FAQ</p>
+            <h2 id="faq-title">
+              Frequently Asked<br />
+              <span class="text-muted">Questions</span>
+            </h2>
+            <a class="text-link" href="#mulai"
+              >Lihat panduan setup <svg class="icon"><use href="#i-up-right" /></svg
+            ></a>
+          </div>
+          <div class="faq-list" data-reveal>
+            <details>
+              <summary>
+                Apakah ini menggantikan tim CSIRT?<span class="faq-plus" aria-hidden="true"></span>
+              </summary>
+              <p>
+                Tidak. WolfStrike memperkuat satu orang IT dalam investigasi, triage, dan pelaporan
+                agar bekerja seperti tim kecil. Monitoring 24/7, validasi hasil analisis, forensik
+                mendalam, dan tanggung jawab hukum tetap membutuhkan manusia dan pihak eksternal.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Server apa yang didukung dan bagaimana setup-nya?<span
+                  class="faq-plus"
+                  aria-hidden="true"
+                ></span>
+              </summary>
+              <p>
+                Versi awal fokus pada VPS Linux dengan akses root atau sudo terbatas. Shared hosting
+                tanpa akses root belum didukung. Siapkan Node.js minimal 22.22.2, jalankan MCP
+                server WolfStrike, lalu hubungkan endpoint-nya ke Hermes, OpenClaw, atau AI coding
+                agent yang mendukung MCP. Validasi dan enrichment VirusTotal memerlukan VT_API_KEY
+                serta konfigurasi akses ke sumber data Anda.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Apa yang terjadi jika API LLM mati?<span class="faq-plus" aria-hidden="true"></span>
+              </summary>
+              <p>
+                Deteksi dan pertahanan dasar berbasis aturan tetap berjalan. Hanya analisis dan
+                penjelasan cerdas yang tertunda.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Apakah demo ini menganalisis sistem saya?<span
+                  class="faq-plus"
+                  aria-hidden="true"
+                ></span>
+              </summary>
+              <p>
+                Tidak. Demo menggunakan data contoh yang berjalan lokal di browser. Demo tidak
+                mengirim log, memanggil LLM atau VirusTotal, maupun mengubah sistem Anda.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Apakah WolfStrike otomatis memblokir ancaman?<span
+                  class="faq-plus"
+                  aria-hidden="true"
+                ></span>
+              </summary>
+              <p>
+                Kode saat ini menyusun hasil respons. Blocking IP/IOC secara aktual memerlukan
+                konektor ke firewall, Wazuh Active Response, atau EDR yang sudah diimplementasikan
+                dan dikonfigurasi. Operator tetap perlu memverifikasi hasil tindakan di
+                infrastruktur.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-section" aria-labelledby="closing-title">
+        <div class="container closing-inner" data-reveal>
+          <p class="eyebrow">FOR THE DEFENDERS. FOR THE NEXT MOVE.</p>
+          <div class="closing-row">
+            <h2 id="closing-title">
+              Build Your CSIRT<br />
+              Capabilities With Us Today
+            </h2>
+            <a
+              class="closing-button"
+              href="#mulai"
+              aria-label="Lihat panduan mulai dengan WolfStrike"
+              ><svg class="icon"><use href="#i-up-right" /></svg
+            ></a>
+          </div>
+          <div class="closing-bottom">
+            <p>
+              Simplify your company&#8217;s cyber incident response with the help of our Skill AI
+              Agent
+            </p>
+            <a href="#mulai"
+              >Mulai dengan WolfStrike <svg class="icon"><use href="#i-arrow" /></svg
+            ></a>
+          </div>
+        </div>
+      </section>
     </main>
-
-
-    <div id="footer"></div>
-
-    <script src="./src/js/main.js"></script>
-
-</body>
-
+    <!-- app:footer -->
+    <dialog class="copy-dialog" id="copy-fallback" aria-labelledby="copy-dialog-title">
+      <form method="dialog">
+        <h2 id="copy-dialog-title">Salin teks</h2>
+        <p>
+          Clipboard tidak tersedia. Pilih teks di bawah, lalu gunakan fitur salin pada perangkat
+          Anda.
+        </p>
+        <textarea
+          id="copy-fallback-text"
+          aria-label="Teks untuk disalin"
+          readonly
+          spellcheck="false"
+        ></textarea
+        ><button class="button button-primary button-small" type="submit">Tutup</button>
+      </form>
+    </dialog>
+    <div class="toast" id="copy-status" role="status" aria-live="polite"></div>
+  </body>
 </html>
